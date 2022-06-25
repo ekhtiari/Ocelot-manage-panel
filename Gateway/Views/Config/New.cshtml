@@ -1,0 +1,77 @@
+﻿@model Gateway.Models.FormViewModal
+
+<form id="frmItems">
+    <input type="hidden" asp-for="RequestIdKey"/>
+    <table>
+        <tr>
+            <td>Up Stream Path Template</td>
+            <td>
+                <input asp-for="UpstreamPathTemplate"/>
+            </td>
+        </tr>
+        <tr>
+            <td>Up Stream Http Method</td>
+            <td>
+                <select multiple="multiple" asp-for="UpstreamHttpMethod">
+                    <option value="Get">Get</option>
+                    <option value="Post">Post</option>
+                    <option value="Put">Put</option>
+                    <option value="Delete">Delete</option>
+                    <option value="Patch">Patch</option>
+                </select>
+
+            </td>
+
+        </tr>
+        <tr>
+            <td>Down Stream Scheme</td>
+            <td>
+                <select asp-for="DownstreamScheme">
+                    <option value="Http">Http</option>
+                    <option value="Https">Https</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>Down Stream Path Template</td>
+            <td>
+                <input asp-for="DownstreamPathTemplate"/>
+            </td>
+        </tr>
+        <tr>
+            <td>Down Stream Host And Ports</td>
+            <td>
+                <input placeholder="Host" asp-for="Host"/>
+                <input placeholder="Port" asp-for="Port"/>
+            </td>
+        </tr>
+        <tr>
+            <td>Swagger Key</td>
+            <td>
+                <input asp-for="swaggerKey"/>
+            </td>
+        </tr>
+        <tr>
+            <td>Swagger Name</td>
+            <td>
+                <input asp-for="swaggerName"/>
+            </td>
+        </tr>
+        <tr>
+            <td>Swagger Version</td>
+            <td>
+                <input asp-for="swaggerVersion"/>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Swagger Address
+            </td>
+            <td>
+                <input asp-for="swaggerAddress"/>
+            </td>
+        </tr>
+
+    </table>
+    <button class="btn btn-info" type="button" onclick="SaveData()">Save</button>
+</form>

@@ -1,0 +1,36 @@
+{
+  "Routes":[
+    {
+      "UpstreamPathTemplate": "/{everything}",
+      "UpstreamHttpMethod": [
+        "Get",
+        "Post",
+        "Put",
+        "Delete"
+      ],
+      "DownstreamScheme": "Http",
+      "DownstreamPathTemplate": "/{everything}",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "127.0.0.1",
+          "Port": 80
+        }
+      ],
+      "SwaggerKey": "firstApi"
+    }
+  ],
+  "SwaggerEndPoints": [
+    {
+      "Key": "firstApi",
+      "TakeServersFromDownstreamService": true,
+      "Config": [
+        {
+          "Name": "First Api",
+          "Version": "V1",
+          "Url": "127.0.0.1"
+        }
+      ]
+    }
+  ]
+}
+

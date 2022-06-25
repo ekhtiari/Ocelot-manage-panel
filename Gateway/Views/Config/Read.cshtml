@@ -1,0 +1,51 @@
+﻿
+@model Gateway.Models.MainRoot
+
+
+@functions
+{
+    private static string ShowAllItemInList(IEnumerable<string> allItem)
+    {
+        return allItem.Aggregate("", (current, item) => current + (item + ","));
+    }
+
+    private static string ShowHostAndPort(IEnumerable<DownstreamHostAndPort> hostInto)
+    {
+        var result = hostInto.Aggregate("", (current, item) => current + ("Host:" + item.Host + " " + "Port:" + item.Port + "--"));
+        return result;
+    }
+}
+
+<table class="table table-hover" id="tblInfo">
+    <thead>
+    <tr>
+        <th>Up Stream Path Template</th>
+        <th>Up Stream Http Method</th>
+        <th>Down Stream Scheme</th>
+        <th>Down Stream Path Template</th>
+        <th>Down Stream Host And Ports</th>
+        <th>Swagger Key</th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    @{
+        foreach (var item in Model.Routes)
+        {
+            <tr>
+                <td>@item.UpstreamPathTemplate</td>
+                <td>@ShowAllItemInList(item.UpstreamHttpMethod)</td>
+                <td>@item.DownstreamScheme</td>
+                <td>@item.DownstreamPathTemplate</td>
+                <td>@ShowHostAndPort(item.DownstreamHostAndPorts)</td>
+                <td>@item.SwaggerKey</td>
+                <td>
+                    <a class="btn btn-sm" asp-controller="Config" asp-action="Edit" asp-route-reqId="@item.RequestIdKey">Edit</a>
+                </td>
+            </tr>
+        }
+    }
+    </tbody>
+</table>
+
+
